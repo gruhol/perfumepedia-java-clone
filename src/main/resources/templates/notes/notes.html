@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+Template Name: Metronic - Bootstrap 4 HTML, React, Angular 9 & VueJS Admin Dashboard Theme
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: https://1.envato.market/EA4JP
+Renew Support: https://1.envato.market/EA4JP
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<!--begin::Head-->
+<head th:fragment="headerfiles">
+    <!--/*/ <th:block th:insert="fragments/headfiles.html :: headfiles">
+    </th:block> /*/-->
+</head>
+<!--end::Head-->
+
+<!--begin::Body-->
+<body  id="kt_body"  class="header-fixed header-mobile-fixed page-loading"  >
+
+<!--begin::Main-->
+<!--begin::Header Mobile-->
+<div id="kt_header_mobile" class="header-mobile bg-primary  header-mobile-fixed " >
+    <!--begin::Logo-->
+    <a href="index.html"><img alt="Logo" src="assets/media/logos/logo-letter-9.png" class="max-h-30px"/></a>
+    <!--end::Logo-->
+
+    <!--begin::Toolbar-->
+    <div class="d-flex align-items-center">
+        <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle"><span></span></button>
+        <button class="btn p-0 ml-2" id="kt_header_mobile_topbar_toggle">
+                <span class="svg-icon svg-icon-xl">
+                <!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <polygon points="0 0 24 0 24 24 0 24"/>
+                    <path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                    <path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
+                </g>
+                </svg>
+                    <!--end::Svg Icon-->
+                </span>
+        </button>
+    </div>
+    <!--end::Toolbar-->
+</div>
+<!--end::Header Mobile-->
+
+<div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="d-flex flex-row flex-column-fluid page">
+        <!--begin::Wrapper-->
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+
+            <!--begin::Header-->
+            <div th:insert="fragments/header.html :: header"></div>
+            <!--end::Header-->
+
+            <!--begin::Content-->
+            <div class="content  d-flex flex-column flex-column-fluid" id="kt_content">
+                <!--begin::Subheader-->
+                <div th:insert="fragments/subheader.html :: subheader"></div>
+                <!--end::Subheader-->
+
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Profile Overview-->
+                        <th:block  th:each="notes : ${notes}">
+
+                        <!--end::Profile Overview-->
+
+                        <div class="card card-custom wave wave-animate-slower mb-8 mb-lg-8">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center p-1">
+                                    <div class="mr-6">
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <a href="#" class="text-dark text-hover-primary font-weight-bold font-size-h1 mb-1">
+                                            <span th:text="${notes.categoryNote.nameCategory}"></span>
+                                            <span th:text="${'(' + #lists.size(notes.noteList) + ')'}"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-10" >
+                            <th:block th:each="noteList : ${notes.noteList}">
+                            <div class="col-lg-3 col-xl-2 mb-0">
+                                <!--begin::Callout-->
+                                <div class="card card-custom gutter-b bg-diagonal">
+                                    <div class="card-body" style="padding: 1.5rem">
+                                        <div class="d-flex align-items-center justify-content-between p-0 flex-lg-wrap flex-xl-nowrap">
+                                            <div class="d-flex flex-column mr-2">
+                                                <a th:href="${'/note/' + noteList.idNote}" class="h7 text-dark text-decoration-underline text-bold text-hover-primary mb-0" th:text="${noteList.nameNote}"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Callout-->
+                            </div>
+                            </th:block>
+                        </div>
+                        </th:block>
+
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+
+            </div>
+            <!--end::Content-->
+            <div th:insert="fragments/footer.html :: footer"></div>
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+</div>
+<!--end::Main-->
+
+<!-- begin::User Panel-->
+<div th:insert="fragments/user-panel.html :: user-panel"></div>
+<!-- end::User Panel-->
+
+<!--begin::Scrolltop-->
+<div th:insert="fragments/scrolltop.html :: scrolltop"></div>
+<!--end::Scrolltop-->
+
+<th:block th:insert="fragments/scripts.html :: scripts"></th:block>
+</body>
+<!--end::Body-->
+</html>
